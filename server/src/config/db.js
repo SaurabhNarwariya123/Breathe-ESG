@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
 
-const connectDB = async (retries = 5, delay = 3000) => {
-  for (let i = 1; i <= retries; i++) {
-    try {
-      const conn = await mongoose.connect(process.env.MONGO_URI);
-      console.log(`MongoDB connected: ${conn.connection.host}`);
-      return;
-    } catch (err) {
-      console.error(`MongoDB connection attempt ${i}/${retries} failed: ${err.message}`);
-      if (i === retries) {
-        console.error('All connection attempts failed. Exiting.');
-        process.exit(1);
-      }
-      await new Promise((res) => setTimeout(res, delay));
-    }
+let cached = global.mongoose || { conn: null, promise: null };
+global.mongoose = cached;
+
+const connectDB = async () => {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(process.env.MONGO_URI, {
+      bufferCommands: false,
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+    });
+  }
+
+  try {
+    cached.conn = await cached.promise;
+    console.log(`MongoDB connected: ${cached.conn.connection.host}`);
+    return cached.conn;
+  } catch (err) {
+    cached.promise = null;
+    throw err;
   }
 };
 
