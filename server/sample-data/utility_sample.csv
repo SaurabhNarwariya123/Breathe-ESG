@@ -1,0 +1,9 @@
+account_number,meter_id,site_name,site_address,billing_period_start,billing_period_end,kwh_consumed,unit,peak_kwh,off_peak_kwh,tariff_code
+ACC-001,MTR-BOM-001,Mumbai HQ,Bandra Kurla Complex Mumbai,2024-03-15,2024-04-14,48500,kWh,31200,17300,T1-COMMERCIAL
+ACC-001,MTR-BOM-002,Mumbai Warehouse,Andheri East Mumbai,2024-03-15,2024-04-14,22300,kWh,14100,8200,T2-INDUSTRIAL
+ACC-002,MTR-DEL-001,Delhi Office,Connaught Place New Delhi,2024-04-01,2024-04-30,31800,kWh,20500,11300,T1-COMMERCIAL
+ACC-002,MTR-DEL-002,Delhi Factory,Okhla Industrial Area New Delhi,2024-04-01,2024-04-30,87200,kWh,56000,31200,T2-INDUSTRIAL
+ACC-003,MTR-BLR-001,Bangalore Tech Park,Whitefield Bengaluru,2024-03-20,2024-04-19,41600,kWh,27000,14600,T1-COMMERCIAL
+ACC-001,MTR-BOM-001,Mumbai HQ,Bandra Kurla Complex Mumbai,2024-04-15,2024-05-14,51200,kWh,33400,17800,T1-COMMERCIAL
+ACC-001,MTR-BOM-002,Mumbai Warehouse,Andheri East Mumbai,2024-04-15,2024-05-14,24100,kWh,15300,8800,T2-INDUSTRIAL
+ACC-004,MTR-HYD-001,Hyderabad Data Center,HITEC City Hyderabad,2024-04-01,2024-04-30,620000,kWh,410000,210000,T3-DATACENTER
